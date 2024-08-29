@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 #    tf.config.experimental.set_memory_growth(gpu, True)
 
 # Remove unnecessary images.
-data_dir = "Dog_Vs_Cat\\initial_dataset"
+data_dir = "Dog_Vs_Cat\\dataset"
 image_exts = ["png"]
 
 for image_class in os.listdir(data_dir):
