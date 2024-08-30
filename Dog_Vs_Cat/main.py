@@ -61,3 +61,41 @@ testing_size = int(len(data)*.1)
 training = data.take(training_size)
 validating = data.skip(training_size).take(validating_size)
 testing = data.skip(training_size+validating_size).take(testing_size)
+
+# Model Setup
+
+model = Sequential()
+
+
+# Model Initialization
+model.add(Conv2D(16, (3,3), 1, activation='relu', input_shape=(256,256,3)))
+model.add(MaxPooling2D())
+
+model.add(Conv2D(32, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D())
+
+model.add(Conv2D(16, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D())
+
+model.add(Flatten())
+
+model.add(Dense(256, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+# Model Compilation
+model.compile('adam', loss=tf.losses.BinaryCrossentropy(), metrics= ['accuracy'])
+# print(model.summary())
+
+# Training the Dataset
+logdir = 'Dog_Vs_Cat\\logs'
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
+
+hist = model.fit(training, epochs=20, validation_data=validating, callbacks=[tensorboard_callback])
+
+# Plotting Performance
+fig = plt.figure()
+plt.plot(hist.history['loss'], color='red', label='loss')
+plt.plot(hist.history['validation_loss'], color='orange', label='validation_loss')
+fig.suptitle('Loss', fontsize=20)
+plt.legend(loc="upper left")
+plt.show()
