@@ -54,7 +54,7 @@ validating_size = int(len(data)*.2)
 testing_size = int(len(data)*.1)
 
 # Check how much data was split. 
-print(testing_size, validating_size, training_size)\
+print(testing_size, validating_size, training_size)
 
 # In this case, 8 pictures were not split amongst the dataset. 
 # There are 992 pictures in this dataset.
