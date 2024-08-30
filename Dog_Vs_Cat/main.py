@@ -14,6 +14,7 @@ for gpu in gpus:
     tf.config.experimental.set_memory_growth(gpu, True)
 
 data_dir = "Dog_Vs_Cat\\dataset"
+logdir = 'Dog_Vs_Cat\\logs'
 
 ########################################################################
 
@@ -90,7 +91,6 @@ model.compile('adam', loss=tf.losses.BinaryCrossentropy(), metrics= ['accuracy']
 print(model.summary())
 
 # Training the Dataset
-logdir = 'Dog_Vs_Cat\\logs'
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
 
 hist = model.fit(training, epochs=20, validation_data=validating, callbacks=[tensorboard_callback])
