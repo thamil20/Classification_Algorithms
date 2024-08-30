@@ -1,1 +1,0 @@
-# This program builds and saves an image classification model.

@@ -1,6 +1,7 @@
 # This program was made while following a tutorial that used a different dataset.
 import tensorflow as tf
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import numpy as np
 from matplotlib import pyplot as plt
 from tensorflow.keras.models import Sequential
